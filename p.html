@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title> jQuery and ideal framework for picture
+	</title>
+	<style type="text/css">
+	*{
+		text-align: center;
+		background-color: black;
+		color:white;
+	}
+	body,html{
+		font-size: 16px;
+	}
+
+.container{
+	margin: 0 auto;
+		/*it works perfectly to center the content it is a parent elements*/
+		width: 90%;
+		border: 3px solid blue;
+		padding: 2%;
+}
+	
+	.container.small,.container.large{
+		display: flex;
+		flex-direction: row;
+		justify-content: space-between;
+		
+
+
+	}
+p{
+	display: block;
+}
+	.container  p{
+		text-align: justify;
+		font-size: 1em;
+		list-style: none;
+
+	}
+	span{
+		font-size: 1.6em;
+	}
+		}	.img{
+			width: 30%;
+			height: 100;
+			color: red;
+			border: 1px solid green;
+			padding: 1%;
+			}
+			/* I provided here one extra selector that is common for every layout*/
+			.red{
+				margin-right: 100px;
+			/* see the effect of margin right*/
+			/* how to calculate this one to em */
+
+		}
+		
+		#wrapper li{
+			display: block;
+			color: red;
+			font-size: 1.2em;
+		}
+		
+	button {
+		width: 20%;
+		margin: 0 auto;
+		background-color: yellow;
+		border-radius: 5px;
+	}
+	</style>
+</head>
+<body>
+<div>
+<h1>Test of side</h1>
+</div>
+<div class="container small">
+	<div class="use two">
+		<div class="red img"><img width=100% src="images/fine_home_1.jpg">
+			<span>Picture <strong style="color: yellow">1</strong></span>
+			<p>
+				It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. 
+			</p>
+
+		</div>
+		<div class="blue img"><img width=100% src="images/fine_home_2.jpg">
+			<span>Picture <strong style="color: green">2</strong></span>
+			<p>
+				It is a long established fact that a reader will be <br>distracted by the readable content of a page when </br>looking at its layout. 
+			</p>
+		</div>
+	</div>
+	<div class="use one">
+		<div class="green img"><img width=100% src="images/fine_home_4.jpg">
+			<span>Picture <strong style="color: blue"> 3</strong></span>
+			<p>
+		It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. 
+			</p>
+		</div>
+	</div>
+</div>
+<div class="container large" id="wrapper">
+	
+	<h1>Welcome</h1>
+	<li class="good">1
+		It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. 
+	</li>
+	<li class="good">2</li>
+	<li class="good">3</li>
+	<li class="good">4</li>
+	<li class="good">5</li>
+	<li class="good">6</li>
+	<button>submit</button>
+</div>
+<script
+  src="js/jquery.min.js"></script>
+<script type="text/javascript">
+	// $(document).ready(function(){
+	// 	blinkText();
+	// });
+	function blinkText()
+	{	$("span").fadeOut(500).fadeIn(500);
+		$("h1").fadeOut(500).fadeIn(500);
+			setTimeout(blinkText, 500);
+	}
+	blinkText();
+	$('button').on('click',function(){
+	//$(".good").append().text("I am doing fine");
+	$("div#wrapper").children('li').first().html("Good morning2");
+	$("div#wrapper").children('li:nth-child(3)').html("I am doing ok 3");
+	$("div#wrapper").children('li:nth-child(4)').html("Good evening4");
+	$("div#wrapper").children('li:nth-child(5)').html("Good after5");
+	$("div#wrapper").children('li:nth-child(6)').html("after6");
+	$("div#wrapper").children('li').last().html("Good afternone7");
+	//$("#wrapper").after().text("I am done");
+});
+</script>
+<!-- media query -->
+<style>
+@media only screen and (max-width: 480px){
+	body{
+		font-size: 18px;
+	}
+	.container.small{
+		display: flex;
+		flex-direction: column;
+		width: 100%;
+
+
+	}
+	.img{
+		width: 100%;
+	}
+	.container.large{
+		display: flex;
+		flex-direction: column;
+		width: 100%;
+
+
+	}
+	button {
+		width: 20%;
+		
+		background-color: pink;
+		
+	}
+	.two p,.one p{
+		font-size: 1.2em;
+		color:yellow;
+	}
+
+}
+@media only screen and (min-width: 481px) and (max-width: 768px){
+	
+	.container.small,.container.large{
+		display: flex;
+		flex-direction: column;
+		width: 100%;
+
+
+	}
+	.use.two{
+		display: flex;
+		flex-direction: row;
+		justify-content: space-around;
+		padding: 2%;
+	}
+	.red.img,.blue.img{
+		width: 100%;
+	}
+	button {
+		width: 20%;
+		
+		background-color: red;
+		
+	}
+	.two p,.one p{
+		font-size: 1.2em;
+		color:pink;
+	}
+}
+@media only screen and (min-width: 769px) and (max-width: 1200px){
+	.container.small,.container.large{
+	width: 100%;
+
+
+	}
+	.red{
+				margin-right: 100px;
+			/* see the effect of margin right*/
+			/* how to calculate this one to em */
+
+		}
+	.use{ 
+		display: flex ;
+		flex-direction: row;
+	}
+	/*this is very important concept otherwise tough*/
+	.container.large{
+		display: flex;
+		flex-direction: column;
+		width: 100%;
+
+
+	}
+	button {
+		width: 20%;
+		
+		background-color: yellow;
+		
+	}
+	.two p,.one p{
+		font-size: 1.2em;
+		color:orange;
+	}
+}
+@media only screen and (min-width: 1201px){
+	.container.small,.container.large{
+	width: 100%;
+
+
+	}
+	.img{
+				margin-right: 10px;
+			 
+
+		}
+	.use{ 
+		display: flex ;
+		flex-direction: row;
+	}
+	/*this is very important concept otherwise tough*/
+	.container.large{
+		display: flex;
+		flex-direction: column;
+		width: 100%;
+
+
+	}
+	button {
+		width: 20%;
+		
+		background-color: darkgreen;
+		
+	}
+	.two p,.one p{
+		font-size: 1.2em;
+		color:maroon;
+	}
+}
+</style>
+</body>
+</html>
+<!--  most important thing need to take one extra box but have a common name  
+1. we need to give the width and sometime we can change the text width accordingly
+2. if the query is 480 px that mean we need to work on that 100% area and change our design layout. this is true for every layout
+3. Here the most important box is use one and use two
+-->
